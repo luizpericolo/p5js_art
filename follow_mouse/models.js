@@ -11,9 +11,18 @@ function Circle(position, radius) {
     }
 
     this.moveTowards = function(x, y) {
+        var _directionMorm = this._calculateDirection(x, y);
+        this._position.add(_directionNorm.times(WORLD.SPEED));
+    }
+
+    this.runFrom = function(x,y) {
+        var _directionNorm = this._calculateDirection(x, y);
+        this._position.add(_directionNorm.times(WORLD.SPEED * -1));
+    }
+
+    this._calculateDirection = function(x, y) {
         var _direction = new Vector2(x - this._position._x, y - this._position._y);
-        var _direction_norm = _direction.norm();
-        this._position.add(_direction_norm.times(WORLD.SPEED));
+        return _direction.norm(); 
     }
 }
 
